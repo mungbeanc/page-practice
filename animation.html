@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    html,body{
+        width:100%;
+    }
+    body{
+        background: url("images/2.jpg") no-repeat;
+        
+    }
+    .imgbox img{
+        margin:auto;
+        position:fixed;
+        left:0;right: 0;
+        top:0;bottom:0;
+    }
+    .imgbox img:nth-child(1){
+        animation: rotateimg 20s linear infinite;
+    }
+    .imgbox img:nth-child(2){
+        margin:auto auto 0;
+    }
+    .guys{
+        width:780px;
+        height: 780px;
+        position: fixed;
+        left:0;right:0;
+        top:0;bottom:0;
+        margin:auto;
+        animation: rotateimg 20s linear infinite;
+    }
+    .guys img {
+        position: absolute;
+        transform-origin: center 10px;
+        animation: rotateimg 20s reverse linear infinite;
+    }
+    .guys img:nth-child(1){
+        left: -10px;
+        top:390px;
+    }
+    .guys img:nth-child(2){
+        right: -10px;
+        top:390px;
+    }
+    .guys img:nth-child(3){
+        left: 135px;
+        top:73px;
+    }
+    .guys img:nth-child(4){
+        right: 145px;
+        top:103px;
+    }
+    @keyframes rotateimg {
+        0%{transform: rotate(0deg);}
+        50%{transform: rotate(180deg);}
+        100%{transform: rotate(360deg);}
+    }
+    </style>
+</head>
+<body>
+    <div class="imgbox">
+        <img src="images/fsw.png" alt="">
+        <img src="images/bracketsmall.png" alt="">
+        <img src="images/big-title.png" alt="">
+    </div>
+    <div class="guys">
+        <img src="images/girl.png" alt="">
+        <img src="images/girls.png" alt="">
+        <img src="images/hairboy.png" alt="">
+        <img src="images/mimi.png" alt="">
+    </div>
+</body>
+</html>
