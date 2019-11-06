@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        table {
+            width:800px;
+            border-collapse: collapse;     
+        }
+        td,th {
+            text-align: center;
+            line-height: 30px;
+            height: 30px;
+            border: 1px solid black;
+        }
+        td img{
+            height: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <script>
+        var data=[
+            {id:1001,icon:"images/mess_03.jpg",name:"定位仪",num:1,price:80},
+            {id:1002,icon:"images/mess_06.jpg",name:"手机",num:1,price:40},
+            {id:1003,icon:"images/mess_08.jpg",name:"信封",num:1,price:20}
+        ];
+        // obj的属性是根据增加的先后顺序遍历
+        data=data.map(function(t){
+            var obj={};
+            obj.selected=Math.floor(Math.random()*2)>0;
+            for(var key in t){
+                obj[key]=t[key];
+            }
+            return obj;
+        });
+        createTable(data);
+        function createTable(data){
+            var table=$c("table",document.body),
+                thr=$c("tr",table);
+            for(var prop in data[0]){
+                var th=$c("th",thr);
+                if(prop==="selected"){
+                    var input1=$c("input",th);
+                    input1.type="checkbox";
+                }else{
+                    th.textContent=prop;
+                }
+            }
+            for(var i=0;i<data.length;i++){
+                var tr=$c("tr",table);
+                for(var key in data[i]){
+                    var td=$c("td",tr);
+                    if(key==="icon"){
+                        var img=$c("img",td);
+                        img.src=data[i].icon;      
+                    }else if(key==="selected"){
+                        var input=$c("input",td);
+                        input.type="checkbox";   
+                        input.checked=data[i].selected;
+                    }else{
+                        td.textContent=data[i][key];
+                    }
+                    
+                }
+            }
+            
+        }
+        function $c(type,parent,style,text){
+            var elem=document.createElement(type);
+            for(var key in style){
+                elem.style[key]=style[key];
+            }
+            if(text){
+                var t=document.createTextNode(text);
+                elem.appendChild(t);
+            }
+            if(parent){
+                parent.appendChild(elem);
+            }
+            return elem;
+        }
+    </script>
+</body>
+</html>
